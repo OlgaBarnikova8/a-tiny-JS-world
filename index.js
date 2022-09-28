@@ -8,8 +8,77 @@ import { print } from './js/lib.js';
 
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
+const INHABITANT = {
+   properties: ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends'],
+   species: {
+     man: 'man',
+     woman: 'woman',
+     dog: 'dog',
+     cat: 'cat',
+   },
+   gender: {
+     male: 'male',
+     female: 'female',
+   },
+ };
 
+const man = {
+   species: INHABITANT.species.man,
+   name: 'Max',
+   gender: INHABITANT.gender.male,
+   legs: 2,
+   hands: 2,
+   saying: 'Hello from Ukraine!',
+   friends: ['Alex', 'Bax!']
+ };
+ 
+ const woman = {
+   species: INHABITANT.species.woman,
+   name: 'Helga',
+   gender: INHABITANT.gender.female,
+   legs: 2,
+   hands: 2,
+   saying: 'Hello Max!',
+   friends: ['Angi', 'Nadya!']
+ };
 
+const cat = {
+   species: INHABITANT.species.cat,
+   name: 'Freya',
+   gender: INHABITANT.gender.female,
+   legs: 4,
+   hands: 0,
+   saying: 'Meow-meow!',
+   friends: ['Panthera', 'Luntik!']
+ };   
+
+const dog = {
+   species: 'dog',
+   name: 'Luntik',
+   gender: 'male',
+   legs: 4,
+   hands: 0,
+   saying: 'woof-woof!',
+   friends: ['Freya', 'Leopard!']
+ };
+ 
+const catWoman = {
+   species: 'catWoman',
+   name: 'Bagheera',
+   gender: 'female',
+   legs: 2,
+   hands: 2,
+   saying: cat.saying,
+   friends: ['Panthera', 'Leopard!']
+ };
+
+ function convertToString(inhabitant) {
+   return INHABITANT.properties.map(prop => `${inhabitant[prop]}`).join('; ');
+ }
+ const worldInhabitans = [man, woman, dog, cat, catWoman];
+ worldInhabitans
+ .map(inhabitant => convertToString(inhabitant))
+ .forEach(inhabitantDescription => print(inhabitantDescription));
 // ======== OUTPUT ========
 /* Use print(message) for output.
    Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
